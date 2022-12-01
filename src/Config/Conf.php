@@ -2,7 +2,7 @@
 
 class Conf {
     static private array $databases = array(
-        'hostname' => 'https://phpmyadmin.alwaysdata.com/',
+        'hostname' => 'mysql-les-randoms.alwaysdata.net',
         'database' => 'les-randoms_data',
         'login' => '291341',
         'password' => '123Random?'
