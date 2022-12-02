@@ -12,23 +12,21 @@
   height: 50px;
 }
 
-
-.submenu:hover{
-  display:block;
-}
-
-.submenu{
-  display:none;
-  position: absolute;
-  left: 0px;
-}
-
 div{
   width: 75%;
   border: 1px solid #000;
   text-align: center;
 }
 
-button:active{
-  background-color: black;
+
+body {
+  text-align: center;
+}
+
+header a{
+  padding:10px;
+}
+
+body {
+  background-color: grey;
 }
