@@ -18,7 +18,7 @@ $utilisateur = \App\Site\Lib\UserConnexion::getInstance()->getConnectedUserChann
                 if ($utilisateur) {
                     echo '<p>Connecté en tant que ' . $utilisateur->getPseudoUtilisateur() . ' <a href="./logout.php">se déconnecter</a></p>';
                 } else {
-                    echo '<p><a href="./login.php">Se connecter</a></p>';
+                    echo '<p><a href="./login.php">Se connecter</a><a href="./signup.php"></a></p>';
                 }
             ?>
             <div>

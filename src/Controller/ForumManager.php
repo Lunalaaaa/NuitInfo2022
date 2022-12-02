@@ -41,6 +41,10 @@ class ForumManager extends Controller
         QuestionRepository::create(new Question(null, $titre, $description, UserConnexion::getInstance()->getConnectedUserChannel()->getIdUtilisateur(), $maladie));
     }
 
+    public static function creerCompte(string $nom, string $mail, string $mdp) {
+        UtilisateurRepository::create(new Utilisateur(null, $nom, $mail, $mdp));
+    }
+
     public static function repondre(string $titre, string $description, int $idReponseA){
         $reponseA = QuestionRepository::select($idReponseA);
         QuestionRepository::create(new Question(null, $titre, $description, UserConnexion::getInstance()->getConnectedUserChannel()->getIdUtilisateur(), $reponseA->getIdMaladie(), $idReponseA));
