@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Accueil</title>
+        <title><?php echo $pagetitle; ?></title>
 
     </head>
     <header> 
@@ -45,18 +45,9 @@
 
 
     <body>
-        
+        <?php
 
-
-
-
-
-
-
-
-
-        <form method=""></form>
-    
-    
+        require __DIR__ . "/{$cheminVueBody}";
+        ?>
     </body>
 </html>

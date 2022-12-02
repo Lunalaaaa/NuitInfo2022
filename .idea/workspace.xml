@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="710581d3-cf48-4726-abe7-c2b6369dd011" name="Changes" comment="sites utiles ok just wait add nav">
+    <list default="true" id="710581d3-cf48-4726-abe7-c2b6369dd011" name="Changes" comment="sites utiles ok just wait add nav, add balise a for img">
+      <change afterPath="$PROJECT_DIR$/Forum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/FormulaireQuestion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/FormulaireReponse.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/ForumRepondre.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Contraception.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Contraception.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Dépistage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Dépistage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Forum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Sites_utiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Sites_utiles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Forum.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/index.html" afterDir="false" />
     </list>
+    <list id="852d926d-8822-4a46-a515-72276405d40f" name="Changes by laura" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +41,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/hugdp/Documents/NDI/NuitInfo2022&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -54,7 +60,7 @@
       <updated>1669930651915</updated>
       <workItem from="1669930653177" duration="612000" />
       <workItem from="1669932842666" duration="389000" />
-      <workItem from="1669933270400" duration="4887000" />
+      <workItem from="1669933270400" duration="10594000" />
     </task>
     <task id="LOCAL-00001" summary="getable ok just test">
       <created>1669934310550</created>
@@ -77,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669936683421</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="sites utiles ok just wait add nav, add balise a for img">
+      <created>1669941566338</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669941566338</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +111,7 @@
     <MESSAGE value="getable ok just test" />
     <MESSAGE value="editable ok just test" />
     <MESSAGE value="sites utiles ok just wait add nav" />
-    <option name="LAST_COMMIT_MESSAGE" value="sites utiles ok just wait add nav" />
+    <MESSAGE value="sites utiles ok just wait add nav, add balise a for img" />
+    <option name="LAST_COMMIT_MESSAGE" value="sites utiles ok just wait add nav, add balise a for img" />
   </component>
 </project>
