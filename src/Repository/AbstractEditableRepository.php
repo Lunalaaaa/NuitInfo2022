@@ -5,62 +5,52 @@ use App\Repository\AbstractGetableRepository;
 
 abstract class AbstractEditableRepository extends AbstractGetableRepository{
     public function create(IInsertable $object) : bool{
-        $valuesObject = $object->formatTableau();
-        $array = $this->getNomsColonnes();
-        $colonnesTag = "";
-        foreach ($array as $item) {
-            $colonnesTag = $colonnesTag . ":" . $item . "Tag,";
+        $sql = "INSERT INTO " . static::getNomTable() . " (";
+        foreach (static::getNomsColonnes() as $col) {
+            $sql .= $col . ", ";
         }
-        $colonnesTag = rtrim($colonnesTag,",");
-
-        $colonnes = "";
-        foreach ($array as $item) {
-            $colonnes = $colonnes . $item . ",";
+        $sql = substr($sql, 0, -2) .  ") VALUES (";
+        $values = array();
+        $elementTable = $object->formatTableau();
+        foreach (static::getNomsColonnes() as $col) {
+            $sql .= ":" . $col . "Tag, ";
+            $values[$col . "Tag"] = $elementTable[$col];
         }
-        $colonnes = rtrim($colonnes,",");
-
-        $sql = "INSERT INTO {$this->getNomTable()} ({$colonnes}) VALUES ({$colonnesTag})";
-        $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
-
-        try{
-            $pdoStatement->execute($valuesObject);
+        $sql = substr($sql, 0, -2) . ")";
+        try {
+            DatabaseConnection::getPdo()->prepare($sql)->execute($values);
             return true;
-        }
-        catch (PDOException $ex){
+        } catch(PDOException $e) {
             return false;
         }
     }
 
     public function delete(string $valeurClePrimaire){
-        $sql = "DELETE FROM {$this->getNomTable()} WHERE {$this->getNomClePrimaire()} = :valeurTag";
+        $sql = "DELETE FROM " . static::getNomTable() . " WHERE " . static::getNomClePrimaire() . "=:Tag";
         $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
         $values = array(
-            "valeurTag" => $valeurClePrimaire,
+            "Tag" => $valeurClePrimaire
         );
-        try{
-            $pdoStatement->execute($values);
-            return true;
-        }
-        catch (PDOException $ex){
-            return false;
-        }
+        $pdoStatement->execute($values);
+        return $pdoStatement->rowCount() > 0;
     }
 
-    public function update(IInsertable $object): void{
-        $valuesObject = $object->formatTableau();
-        $array = $this->getNomsColonnes();
-        $colonnes = "";
-        foreach ($array as $item) {
-            //if($_GET[$item] != '') {
-            $colonnes = $colonnes . $item . " =:" . $item . "Tag,";
-            //}
+    public function update(IInsertable $object): bool{
+        $sql = "UPDATE " . static::getNomTable() . " SET ";
+        $values = array();
+        $elementTable = $object->formatTableau();
+        foreach (static::getNomsColonnes() as $col) {
+            if (static::getNomClePrimaire() != $col) $sql .= $col . "=:" . $col . "Tag, ";
+            $values[$col . "Tag"] = $elementTable[$col];
         }
-        $colonnes = rtrim($colonnes,",");
-        $sql = "UPDATE {$this->getNomTable()} SET $colonnes WHERE {$this->getNomClePrimaire()}=:{$this->getNomClePrimaire()}Tag;";
-        var_dump($sql);
-        $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
-        var_dump($valuesObject);
-        $pdoStatement->execute($valuesObject);
+        $sql = substr($sql, 0, -2);
+        $sql .= " WHERE " . static::getNomClePrimaire() . "=:" . static::getNomClePrimaire() . "Tag";
+        try {
+            DatabaseConnection::getPdo()->prepare($sql)->execute($values);
+            return true;
+        } catch(PDOException $e) {
+            return false;
+        }
     }
 
 

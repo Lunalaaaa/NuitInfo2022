@@ -2,7 +2,7 @@
 
 class Utilisateur implements \App\Model\IInsertable{
     private int $idUtilisateur;
-    private string $pseudo;
+    private string $pseudoUtilisateur;
     private string $mail;
     private string $mdp;
     private ?string $discord;
@@ -11,17 +11,17 @@ class Utilisateur implements \App\Model\IInsertable{
 
     /**
      * @param int $idUtilisateur
-     * @param string $pseudo
+     * @param string $pseudoUtilisateur
      * @param string $mail
      * @param string $mdp
      * @param string|null $discord
      * @param string|null $discordVerif
      * @param string|null $dateCreation
      */
-    public function __construct(int $idUtilisateur, string $pseudo, string $mail, string $mdp, ?string $discord, ?string $discordVerif, ?string $dateCreation = null)
+    public function __construct(int $idUtilisateur, string $pseudoUtilisateur, string $mail, string $mdp, ?string $discord, ?string $discordVerif, ?string $dateCreation = null)
     {
         $this->idUtilisateur = $idUtilisateur;
-        $this->pseudo = $pseudo;
+        $this->pseudoUtilisateur = $pseudoUtilisateur;
         $this->mail = $mail;
         $this->mdp = $mdp;
         $this->discord = $discord;
@@ -50,18 +50,18 @@ class Utilisateur implements \App\Model\IInsertable{
     /**
      * @return string
      */
-    public function getPseudo(): string
+    public function getPseudoUtilisateur(): string
     {
-        return $this->pseudo;
+        return $this->pseudoUtilisateur;
     }
 
     /**
-     * @param string $pseudo
+     * @param string $pseudoUtilisateur
      * @return Utilisateur
      */
-    public function setPseudo(string $pseudo): Utilisateur
+    public function setPseudoUtilisateur(string $pseudoUtilisateur): Utilisateur
     {
-        $this->pseudo = $pseudo;
+        $this->pseudoUtilisateur = $pseudoUtilisateur;
         return $this;
     }
 
@@ -160,7 +160,7 @@ class Utilisateur implements \App\Model\IInsertable{
     {
         return [
             'idUtilisateur' => $this->idUtilisateur,
-            'pseudo' => $this->pseudo,
+            'pseudoUtilisateur' => $this->pseudoUtilisateur,
             'mail' => $this->mail,
             'mdp' => $this->mdp,
             'discord' => $this->discord,

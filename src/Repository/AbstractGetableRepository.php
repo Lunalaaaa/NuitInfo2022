@@ -6,36 +6,32 @@ use App\Model\IInsertable;
 use DatabaseConnection;
 
 abstract class AbstractGetableRepository {
-    public function selectAll(){
-        $sql = "SELECT * FROM " . $this->getNomTable();
-        $tab = [];
-        $pdoStatement = DatabaseConnection::getPdo()->query($sql);
-        foreach ($pdoStatement as $element){
-            $tab = $this->builder($element);
+    public function selectAll(?array $filter = []){
+        $sql = "SELECT * FROM " . static::getNomTable() . " WHERE ";
+        $values = [];
+        foreach ($filter as $col=>$val) {
+            $sql .= "$col = :{$col}Tag  AND ";
+            $values[$col . 'Tag'] = $val;
         }
-        return $tab;
+        $sql = substr($sql, 0, -6);
+        $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
+        $pdoStatement->execute($values);
+        $elements = [];
+        foreach ($pdoStatement as $elementFormatTableau) {
+            $elements[] = $this->builder($elementFormatTableau);
+        }
+        return $elements;
     }
 
     public function select($id){
-        $sql = "SELECT * from {$this->getNomTable()} WHERE {$this->getNomClePrimaire()} = :valeurTag";
-        // Préparation de la requête
+        $sql = "SELECT * from " . static::getNomTable() . " WHERE " . static::getNomClePrimaire() . "=:Tag";
         $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
-
-        $values = array(
-            "valeurTag" => $id,
-        );
-        // On donne les valeurs et on exécute la requête
-        $pdoStatement->execute($values);
-
-        // On récupère les résultats comme précédemment
-        // Note: fetch() renvoie false si pas de voiture correspondante
-        $objet = $pdoStatement->fetch();
-        if(!$objet){
-            return null;
+        $pdoStatement->execute(["Tag" => $id]);
+        $voiture = $pdoStatement->fetch();
+        if ($voiture) {
+            return $this->builder($voiture);
         }
-        else{
-            return $this->builder($objet);
-        }
+        return null;
     }
 
 

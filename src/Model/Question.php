@@ -10,6 +10,10 @@ class Question implements IInsertable {
     private int $idMaladie;
     private int $idReponseA;
     private ?string $datePoste;
+    private ?string $PseudoUtilisateur;
+    private ?string $nomMaladie;
+    private ?string $reponseA;
+    private ?string $pseudoReponseA;
 
     /**
      * @param int $idQuestion
@@ -20,7 +24,7 @@ class Question implements IInsertable {
      * @param int $idReponseA
      * @param string $datePoste
      */
-    public function __construct(int $idQuestion, string $titre, string $description, int $idUtilisateur, int $idMaladie, int $idReponseA, ?string $datePoste = null)
+    public function __construct(int $idQuestion, string $titre, string $description, int $idUtilisateur, int $idMaladie, int $idReponseA, ?string $datePoste = null, ?string $pseudoUtilisateur = null, ?string $nomMaladie = null, ?string $reponseA = null, ?string $pseudoReponseA = null)
     {
         $this->idQuestion = $idQuestion;
         $this->titre = $titre;
@@ -29,6 +33,10 @@ class Question implements IInsertable {
         $this->idMaladie = $idMaladie;
         $this->idReponseA = $idReponseA;
         $this->datePoste = $datePoste;
+        $this->PseudoUtilisateur = $pseudoUtilisateur;
+        $this->nomMaladie = $nomMaladie;
+        $this->reponseA = $reponseA;
+        $this->pseudoReponseA = $pseudoReponseA;
     }
 
     /**
@@ -148,6 +156,24 @@ class Question implements IInsertable {
     }
 
     /**
+     * @return string|null
+     */
+    public function getPseudoUtilisateur(): ?string
+    {
+        return $this->PseudoUtilisateur;
+    }
+
+    /**
+     * @param string|null $PseudoUtilisateur
+     * @return Question
+     */
+    public function setPseudoUtilisateur(?string $PseudoUtilisateur): Question
+    {
+        $this->PseudoUtilisateur = $PseudoUtilisateur;
+        return $this;
+    }
+
+    /**
      * @param string $datePoste
      * @return Question
      */
@@ -156,6 +182,62 @@ class Question implements IInsertable {
         $this->datePoste = $datePoste;
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getNomMaladie(): ?string
+    {
+        return $this->nomMaladie;
+    }
+
+    /**
+     * @param string|null $nomMaladie
+     * @return Question
+     */
+    public function setNomMaladie(?string $nomMaladie): Question
+    {
+        $this->nomMaladie = $nomMaladie;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReponseA(): ?string
+    {
+        return $this->reponseA;
+    }
+
+    /**
+     * @param string|null $reponseA
+     * @return Question
+     */
+    public function setReponseA(?string $reponseA): Question
+    {
+        $this->reponseA = $reponseA;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPseudoReponseA(): ?string
+    {
+        return $this->pseudoReponseA;
+    }
+
+    /**
+     * @param string|null $pseudoReponseA
+     * @return Question
+     */
+    public function setPseudoReponseA(?string $pseudoReponseA): Question
+    {
+        $this->pseudoReponseA = $pseudoReponseA;
+        return $this;
+    }
+
+
 
 
     public function formatTableau(): array
