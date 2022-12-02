@@ -40,13 +40,15 @@ class UserConnexion
 
     public static function paswdCheck(string $pswd, string $hash): bool
     {
-        return password_verify(hash_hmac("sha256", $pswd, Conf::getPepper()), $hash);
+        return $pswd == $hash;
+//        return password_verify(hash_hmac("sha256", $pswd, Conf::getPepper()), $hash);
     }
 
-    public function connect(string $idUtilisateur): void
+    public function connect(string $idUtilisateur): bool
     {
         Session::getInstance()->save(self::$connexionKey, $idUtilisateur);
         static::$instance = new UserConnexion();
+        return $this->isConnected();
     }
 
     public function isConnected(): bool

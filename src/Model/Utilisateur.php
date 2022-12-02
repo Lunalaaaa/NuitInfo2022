@@ -1,7 +1,7 @@
 <?php
 namespace App\Site\Model;
 class Utilisateur implements IInsertable{
-    private int $idUtilisateur;
+    private ?int $idUtilisateur;
     private string $pseudoUtilisateur;
     private string $mail;
     private string $mdp;
@@ -10,7 +10,7 @@ class Utilisateur implements IInsertable{
     private ?string $dateCreation;
 
     /**
-     * @param int $idUtilisateur
+     * @param ?int $idUtilisateur
      * @param string $pseudoUtilisateur
      * @param string $mail
      * @param string $mdp
@@ -18,7 +18,7 @@ class Utilisateur implements IInsertable{
      * @param string|null $discordVerif
      * @param string|null $dateCreation
      */
-    public function __construct(int $idUtilisateur, string $pseudoUtilisateur, string $mail, string $mdp, ?string $discord, ?string $discordVerif, ?string $dateCreation = null)
+    public function __construct(?int $idUtilisateur, string $pseudoUtilisateur, string $mail, string $mdp, ?string $discord = null, ?string $discordVerif = null, ?string $dateCreation = null)
     {
         $this->idUtilisateur = $idUtilisateur;
         $this->pseudoUtilisateur = $pseudoUtilisateur;
