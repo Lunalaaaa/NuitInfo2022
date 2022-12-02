@@ -7,7 +7,7 @@ class DatabaseConnection
     private static ?DatabaseConnection $instance = null;
     private PDO $pdo;
 
-    public function __construct()
+    private function __construct()
     {
         $login = Conf::getLogin();
         $hostname = Conf::getHostname();

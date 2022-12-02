@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 use App\Model\AbstractDataObjet;
+use App\Model\IInsertable;
 use DatabaseConnection;
 
 abstract class AbstractGetableRepository {
@@ -40,6 +41,6 @@ abstract class AbstractGetableRepository {
 
 
     protected abstract function getNomTable(): string;
-    protected abstract function builder(array $objetFormatTableau) : AbstractDataObjet;
+    protected abstract function builder(array $objetFormatTableau) : IInsertable;
     protected abstract function getNomClePrimaire(): string;
 }

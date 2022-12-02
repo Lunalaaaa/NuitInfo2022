@@ -1,9 +1,10 @@
 <?php
 
-use App\Model\AbstractDataObjet;
+use App\Model\IInsertable;
+use App\Repository\AbstractGetableRepository;
 
-abstract class AbstractEditableRepository{
-    public function create(AbstractDataObjet $object) : bool{
+abstract class AbstractEditableRepository extends AbstractGetableRepository{
+    public function create(IInsertable $object) : bool{
         $valuesObject = $object->formatTableau();
         $array = $this->getNomsColonnes();
         $colonnesTag = "";
@@ -45,7 +46,7 @@ abstract class AbstractEditableRepository{
         }
     }
 
-    public function update(AbstractDataObjet $object): void{
+    public function update(IInsertable $object): void{
         $valuesObject = $object->formatTableau();
         $array = $this->getNomsColonnes();
         $colonnes = "";
