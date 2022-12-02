@@ -7,6 +7,9 @@ A la conquête de "l’œuf de pâques" : Pour débloquer l'easter egg il faut f
 
 Cet easter egg remplit les 2 défis et présente un bonhomme bâton(pas d'idée + il faut rendre dans 2 heures et c'est marrant :) ).
 
+La création de compte ne fonctionne pas forcément donc voici l'identifiant et le mot de passe d'un utilisateur.
 
+Identifiant : Rouchonnou
+mdp: 132r0uc40n
 
 
