@@ -5,4 +5,4 @@ $loader->addNamespace('App\Site', __DIR__ . '/src');
 $loader->register();
 
 
-\App\Site\Controller\Controller::afficheVue('index.html');
+\App\Site\Controller\Controller::afficheVue('Depistage.html', 'Dépistage');

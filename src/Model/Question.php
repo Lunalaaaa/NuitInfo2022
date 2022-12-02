@@ -243,7 +243,6 @@ class Question implements IInsertable {
     public function formatTableau(): array
     {
         return [
-            'idQuestion' => $this->idQuestion,
             'titre' => $this->titre,
             'description' => $this->description,
             'idUtilisateur' => $this->idUtilisateur,

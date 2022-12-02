@@ -10,10 +10,9 @@ $loader->register();
 
 if (isset($_GET['post'])) {
     $post = ForumManager::afficher($_GET['post']);
-    ForumManager::afficheVue("view.php", ["pagetitle" => "Forum","cheminVueBody"=>"detail.php","question"=> $post]);
+    ForumManager::afficheVue("detail.php", 'Forum', ["post"=> $post]);
 } else {
     $tab = ForumManager::afficherTous();
-    var_dump($tab);
-    ForumManager::afficheVue("view.php", ["pagetitle" => "Forum", "donnees" => $tab, "cheminVueBody"=>"FormulaireQuestion.html"]);
+    ForumManager::afficheVue("questions.php", 'Forum', ["tab" => $tab]);
 }
 

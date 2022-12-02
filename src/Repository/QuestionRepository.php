@@ -7,7 +7,7 @@ class QuestionRepository extends AbstractEditableRepository
 
     protected static function getNomsColonnes(): array
     {
-        return ['idQuestion', 'titre', 'description', 'idUtilisateur', 'idMaladie', 'idReponseA', 'datePoste'];
+        return ['titre', 'description', 'idUtilisateur', 'idMaladie', 'idReponseA'];
     }
 
     protected static function getNomClePrimaire(): string

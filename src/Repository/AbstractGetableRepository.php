@@ -9,8 +9,13 @@ abstract class AbstractGetableRepository {
         $sql = "SELECT * FROM " . static::getNomTable() . " WHERE ";
         $values = [];
         foreach ($filter as $col=>$val) {
-            $sql .= "$col = :{$col}Tag  AND ";
-            $values[$col . 'Tag'] = $val;
+            if ($val == null) {
+                $sql .= "$col IS NULL  AND ";
+            } else {
+                $sql .= "$col = :{$col}Tag  AND ";
+                $values[$col . 'Tag'] = $val;
+            }
+
         }
         $sql = substr($sql, 0, -6);
         $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);

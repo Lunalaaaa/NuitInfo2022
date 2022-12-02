@@ -1,17 +1,28 @@
+<?php
+$utilisateur = \App\Site\Lib\UserConnexion::getInstance()->getConnectedUserChannel();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="./styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo $pagetitle; ?></title>
+        <title><?php echo $pagetitle ?? 'Les Randoms'; ?></title>
 
     </head>
     <header> 
         <nav>
+            <?php
+                if ($utilisateur) {
+                    echo '<p>Connecté en tant que ' . $utilisateur->getPseudoUtilisateur() . ' <a href="./logout.php">se déconnecter</a></p>';
+                } else {
+                    echo '<p><a href="./login.php">Se connecter</a></p>';
+                }
+            ?>
             <div>
-                <a href = "./index.html">Accueil</a>
+                <a href = "./">Accueil</a>
             </div>
     
   
@@ -20,19 +31,19 @@
             
 
             <div> 
-                <a href = "Contraception.html">Contraception</a> 
+                <a href = "./contraception.php">Contraception</a>
             </div>
         
             <div>
-                <a href = "Dépistage.html">Dépistage</a>
+                <a href = "./depistage.php">Dépistage</a>
             </div>
             
             <div>
-                <a href = "FormulaireQuestion.html">Forum</a>
+                <a href = "./forum.php">Forum</a>
             </div>
 
             <div>
-                <a href = "Sites_utiles.html">Sites Utiles</a>
+                <a href = "./sites.php">Sites Utiles</a>
             </div> 
 
         </nav>
@@ -47,7 +58,7 @@
     <body>
         <?php
 
-        require __DIR__ . "/{$cheminVueBody}";
+        require $cheminVueBody;
         ?>
     </body>
 </html>

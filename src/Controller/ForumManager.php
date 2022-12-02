@@ -13,11 +13,19 @@ use App\Site\Repository\UtilisateurRepository;
 class ForumManager extends Controller
 {
     public static function afficherTous() : array{
-        return QuestionDetailedRepository::selectAll();
+        return QuestionDetailedRepository::selectAll(['idReponseA'=>null]);
     }
 
     public static function afficher(int $id){
         return QuestionDetailedRepository::select($id);
+    }
+
+    public static function getReponses(int $id) : array {
+        return (QuestionDetailedRepository::selectAll(['idReponseA'=>$id]));
+    }
+
+    public static function getMaladies() : array {
+        return MaladieRepository::selectAll();
     }
 
     public static function connection(string $pseudo, string $mdp) : bool{
@@ -29,13 +37,12 @@ class ForumManager extends Controller
         return UtilisateurRepository::create(new Utilisateur(null, $pseudo, $email, $mdp));
     }
 
-    public static function poster(string $titre, string $description, string $maladie) {
-        QuestionRepository::create(new Question(null, $titre, $description, UserConnexion::getInstance()->getConnectedUserChannel()->getIdUtilisateur(), MaladieRepository::selectAll(['nomMaladie'=>$maladie])[0]->getIdMaladie()));
+    public static function poster(string $titre, string $description, int $maladie) {
+        QuestionRepository::create(new Question(null, $titre, $description, UserConnexion::getInstance()->getConnectedUserChannel()->getIdUtilisateur(), $maladie));
     }
 
     public static function repondre(string $titre, string $description, int $idReponseA){
         $reponseA = QuestionRepository::select($idReponseA);
         QuestionRepository::create(new Question(null, $titre, $description, UserConnexion::getInstance()->getConnectedUserChannel()->getIdUtilisateur(), $reponseA->getIdMaladie(), $idReponseA));
-        Controller::afficheVue("view.php", ["pagetitle" => "Reponse Forum","cheminVueBody"=>"ForumRepondre.php"]);
     }
 }
