@@ -1,6 +1,6 @@
 <?php
-
-class Utilisateur implements \App\Model\IInsertable{
+namespace App\Site\Model;
+class Utilisateur implements IInsertable{
     private int $idUtilisateur;
     private string $pseudoUtilisateur;
     private string $mail;

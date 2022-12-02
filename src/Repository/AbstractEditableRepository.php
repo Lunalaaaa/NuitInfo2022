@@ -1,10 +1,12 @@
 <?php
 
-use App\Model\IInsertable;
-use App\Repository\AbstractGetableRepository;
+namespace App\Site\Repository;
+
+use App\Site\Model\IInsertable;
+use PDOException;
 
 abstract class AbstractEditableRepository extends AbstractGetableRepository{
-    public function create(IInsertable $object) : bool{
+    public static function create(IInsertable $object) : bool{
         $sql = "INSERT INTO " . static::getNomTable() . " (";
         foreach (static::getNomsColonnes() as $col) {
             $sql .= $col . ", ";
@@ -25,7 +27,7 @@ abstract class AbstractEditableRepository extends AbstractGetableRepository{
         }
     }
 
-    public function delete(string $valeurClePrimaire){
+    public static function delete(string $valeurClePrimaire){
         $sql = "DELETE FROM " . static::getNomTable() . " WHERE " . static::getNomClePrimaire() . "=:Tag";
         $pdoStatement = DatabaseConnection::getPdo()->prepare($sql);
         $values = array(
@@ -35,7 +37,7 @@ abstract class AbstractEditableRepository extends AbstractGetableRepository{
         return $pdoStatement->rowCount() > 0;
     }
 
-    public function update(IInsertable $object): bool{
+    public static function update(IInsertable $object): bool{
         $sql = "UPDATE " . static::getNomTable() . " SET ";
         $values = array();
         $elementTable = $object->formatTableau();
@@ -55,6 +57,6 @@ abstract class AbstractEditableRepository extends AbstractGetableRepository{
 
 
 
-    protected abstract function getNomsColonnes(): array;
-    protected abstract function getNomClePrimaire(): string;
+    protected static abstract function getNomsColonnes(): array;
+    protected static abstract function getNomClePrimaire(): string;
 }

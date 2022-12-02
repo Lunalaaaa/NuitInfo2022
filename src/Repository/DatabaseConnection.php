@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . '/../Config/Conf.php';
+namespace App\Site\Repository;
+use App\Site\Config\Conf;
+use PDO;
+use PDOException;
 
 class DatabaseConnection
 {

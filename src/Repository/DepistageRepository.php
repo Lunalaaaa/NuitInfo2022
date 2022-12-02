@@ -1,24 +1,26 @@
 <?php
+namespace App\Site\Repository;
+use App\Site\Model\Depistage;
 
 class DepistageRepository extends AbstractEditableRepository
 {
 
-    protected function getNomsColonnes(): array
+    protected static function getNomsColonnes(): array
     {
         return ['idDepistage', 'nomDepistage'];
     }
 
-    protected function getNomClePrimaire(): string
+    protected static function getNomClePrimaire(): string
     {
         return 'idDepistage';
     }
 
-    protected function getNomTable(): string
+    protected static function getNomTable(): string
     {
         return 'DEPISTAGES';
     }
 
-    protected function builder(array $objetFormatTableau): Depistage
+    protected static function builder(array $objetFormatTableau): Depistage
     {
         return new Depistage(
             $objetFormatTableau['idDepistage'],

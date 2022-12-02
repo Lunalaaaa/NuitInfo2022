@@ -1,16 +1,18 @@
 <?php
 
-use App\Repository\AbstractGetableRepository;
+namespace App\Site\Repository;
+
+use App\Site\Model\Utilisateur;
 
 class UtilisateurRepository extends AbstractEditableRepository
 {
 
-    protected function getNomTable(): string
+    protected static function getNomTable(): string
     {
         return 'UTILISATEURS';
     }
 
-    protected function builder(array $objetFormatTableau): Utilisateur
+    protected static function builder(array $objetFormatTableau): Utilisateur
     {
         return new Utilisateur(
             $objetFormatTableau['idUtilisateur'],
@@ -23,12 +25,12 @@ class UtilisateurRepository extends AbstractEditableRepository
         );
     }
 
-    protected function getNomClePrimaire(): string
+    protected static function getNomClePrimaire(): string
     {
         return 'idUtilisateur';
     }
 
-    protected function getNomsColonnes(): array
+    protected static function getNomsColonnes(): array
     {
         return ['idUtilisateur', 'pseudoUtilisateur', 'mail', 'mdp', 'discord', 'discordVerification', 'dateCreation'];
     }

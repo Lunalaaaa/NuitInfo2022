@@ -1,14 +1,16 @@
 <?php
+namespace App\Site\Repository;
+use App\Site\Model\Maladie;
 
 class MaladieRepository extends AbstractEditableRepository
 {
 
-    protected function getNomTable(): string
+    protected static function getNomTable(): string
     {
         return 'MALADIES';
     }
 
-    protected function builder(array $objetFormatTableau): Maladie
+    protected static function builder(array $objetFormatTableau): Maladie
     {
         return new Maladie(
             $objetFormatTableau['idMaladie'],
@@ -17,12 +19,12 @@ class MaladieRepository extends AbstractEditableRepository
         );
     }
 
-    protected function getNomClePrimaire(): string
+    protected static function getNomClePrimaire(): string
     {
         return 'idMaladie';
     }
 
-    protected function getNomsColonnes(): array
+    protected static function getNomsColonnes(): array
     {
         return ['idMaladie', 'nomMaladie', 'description'];
     }

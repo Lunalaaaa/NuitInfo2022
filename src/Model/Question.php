@@ -1,14 +1,14 @@
 <?php
 
-use App\Model\IInsertable;
+namespace App\Site\Model;
 
 class Question implements IInsertable {
-    private int $idQuestion;
+    private ?int $idQuestion;
     private string $titre;
     private string $description;
     private int $idUtilisateur;
     private int $idMaladie;
-    private int $idReponseA;
+    private ?int $idReponseA;
     private ?string $datePoste;
     private ?string $PseudoUtilisateur;
     private ?string $nomMaladie;
@@ -16,7 +16,7 @@ class Question implements IInsertable {
     private ?string $pseudoReponseA;
 
     /**
-     * @param int $idQuestion
+     * @param ?int $idQuestion
      * @param string $titre
      * @param string $description
      * @param int $idUtilisateur
@@ -24,7 +24,7 @@ class Question implements IInsertable {
      * @param int $idReponseA
      * @param string $datePoste
      */
-    public function __construct(int $idQuestion, string $titre, string $description, int $idUtilisateur, int $idMaladie, int $idReponseA, ?string $datePoste = null, ?string $pseudoUtilisateur = null, ?string $nomMaladie = null, ?string $reponseA = null, ?string $pseudoReponseA = null)
+    public function __construct(?int $idQuestion, string $titre, string $description, int $idUtilisateur, int $idMaladie, ?int $idReponseA = null, ?string $datePoste = null, ?string $pseudoUtilisateur = null, ?string $nomMaladie = null, ?string $reponseA = null, ?string $pseudoReponseA = null)
     {
         $this->idQuestion = $idQuestion;
         $this->titre = $titre;

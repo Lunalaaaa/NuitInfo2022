@@ -1,6 +1,5 @@
 <?php
-
-use App\Model\IInsertable;
+namespace App\Site\Model;
 
 class Contraception implements IInsertable {
     private int $idContraception;

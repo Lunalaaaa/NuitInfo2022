@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\IInsertable;
+namespace App\Site\Model;
 
 class Depistage implements IInsertable {
     private int $idDepistage;

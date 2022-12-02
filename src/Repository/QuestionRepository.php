@@ -1,24 +1,26 @@
 <?php
+namespace App\Site\Repository;
+use App\Site\Model\Question;
 
 class QuestionRepository extends AbstractEditableRepository
 {
 
-    protected function getNomsColonnes(): array
+    protected static function getNomsColonnes(): array
     {
         return ['idQuestion', 'titre', 'description', 'idUtilisateur', 'idMaladie', 'idReponseA', 'datePoste'];
     }
 
-    protected function getNomClePrimaire(): string
+    protected static function getNomClePrimaire(): string
     {
         return 'idQuestion';
     }
 
-    protected function getNomTable(): string
+    protected static function getNomTable(): string
     {
         return 'QUESTIONS';
     }
 
-    protected function builder(array $objetFormatTableau): Question
+    protected static function builder(array $objetFormatTableau): Question
     {
         return new Question(
             $objetFormatTableau['idQuestion'],

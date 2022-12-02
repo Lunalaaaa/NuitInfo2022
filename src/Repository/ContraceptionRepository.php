@@ -1,24 +1,26 @@
 <?php
+namespace App\Site\Repository;
+use App\Site\Model\Contraception;
 
 class ContraceptionRepository extends AbstractEditableRepository
 {
 
-    protected function getNomsColonnes(): array
+    protected static function getNomsColonnes(): array
     {
         return ['idContraception', 'nomContraception', 'sexe'];
     }
 
-    protected function getNomClePrimaire(): string
+    protected static function getNomClePrimaire(): string
     {
         return 'idContraception';
     }
 
-    protected function getNomTable(): string
+    protected static function getNomTable(): string
     {
         return 'CONTRACEPTIONS';
     }
 
-    protected function builder(array $objetFormatTableau): Contraception
+    protected static function builder(array $objetFormatTableau): Contraception
     {
         return new Contraception(
             $objetFormatTableau['idContraception'],

@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Site\Config;
 class Conf {
     static private array $databases = array(
         'hostname' => 'mysql-les-randoms.alwaysdata.net',
@@ -24,6 +24,11 @@ class Conf {
 
     static public function getPassword() : string {
         return static::$databases['password'];
+    }
+
+    public static function getPepper(): string
+    {
+        return 'rthhcgvYFCygvcutdXyviyfdxrch756747854';
     }
 
 }
