@@ -22,3 +22,13 @@
   position: absolute;
   left: 0px;
 }
+
+div{
+  width: 75%;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+button:active{
+  background-color: black;
+}
